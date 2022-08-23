@@ -614,6 +614,19 @@ class PexIncludeToolsField(BoolField):
     )
 
 
+class PexVenvSitePackagesCopies(BoolField):
+    alias = "venv_site_packages_copies"
+    default = False
+    help = softwrap(
+        """
+        Whether to include Pex tools in the PEX bootstrap code.
+
+        With tools included, the generated PEX file can be executed with `PEX_TOOLS=1 <pex file> --help`
+        to gain access to all the available tools.
+        """
+    )
+
+
 _PEX_BINARY_COMMON_FIELDS = (
     InterpreterConstraintsField,
     PythonResolveField,
@@ -631,6 +644,7 @@ _PEX_BINARY_COMMON_FIELDS = (
     PexIncludeRequirementsField,
     PexIncludeSourcesField,
     PexIncludeToolsField,
+    PexVenvSitePackagesCopies,
     RestartableField,
 )
 
